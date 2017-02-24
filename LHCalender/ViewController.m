@@ -7,22 +7,36 @@
 //
 
 #import "ViewController.h"
+#import "LHCalenderViewController.h"
 
 @interface ViewController ()
-
+{
+    UIButton *calenderBtn;
+}
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+   
+    self.title = @"日历demo";
+    calenderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    calenderBtn.layer.borderColor = [UIColor blackColor].CGColor;
+    calenderBtn.layer.borderWidth = 1;
+    calenderBtn.frame = CGRectMake(self.view.center.x-50, self.view.center.y-20, 100, 40);
+    [calenderBtn setTitle:@"查看日历" forState:UIControlStateNormal];
+    [calenderBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [calenderBtn addTarget:self action:@selector(calenderBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:calenderBtn];
+    
 }
 
+- (void)calenderBtnClick {
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    LHCalenderViewController *calenderVC = [[LHCalenderViewController alloc]init];
+    [self.navigationController pushViewController:calenderVC animated:YES];
+    
 }
 
 
